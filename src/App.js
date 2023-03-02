@@ -15,7 +15,7 @@ class App extends React.Component {
   // ComponentDidMount is used to
   // execute the code
   componentDidMount() {
-    fetch("https://restcountries.com/v2/region/asia")
+    fetch("https://restcountries.com/v2/region/europe")
       .then((res) => res.json())
       .then((json) => {
         this.setState({
@@ -37,6 +37,7 @@ class App extends React.Component {
         <h1>List of Countries</h1>
         <DropDown />
         <table
+          class="table table-striped table-bordered table-hover"
           striped
           bordered
           hover
@@ -48,19 +49,21 @@ class App extends React.Component {
             marginBottom: "60px",
           }}
         >
-          <tbody>
-            <tr>
-              <th>Code</th>
-              <th>Name</th>
-              <th>Subregin</th>
-              <th>Flag</th>
-              <th>TimeZone</th>
-            </tr>
+                <thead className="table-dark">
+        <tr>
+          <th>Code</th>
+          <th>Name</th>
+          <th>Capital</th>
+          <th>Flag</th>
+          <th>subregion</th>
+        </tr>
+      </thead>
+          <tbody class="thead-dark">
             {items.map((item) => (
               <tr item={item}>
                 <td>{item.numericCode}</td>
                 <td>{item.name}</td>
-                <td>{item.subregion}</td>
+                <td>{item.capital}</td>
                 <td>
                   <img
                     width="20px"
@@ -69,8 +72,7 @@ class App extends React.Component {
                     alt="flag"
                   />
                 </td>
-                <td>{item.timezones}</td>
-                
+                <td>{item.subregion}</td>
               </tr>
             ))}
           </tbody>
@@ -82,17 +84,3 @@ class App extends React.Component {
 
 export default App;
 
-// return (
-//   <div className = "App">
-//     <h1> Region Data </h1>
-//     <DropDown/> {
-//       items.map((item) => (
-//       <ol key = { item.id } >
-//         Name: { item.name },
-//         Capital: { item.capital },
-//         Sub Region: { item.subregion }
-//         </ol>
-//       ))
-//     }
-//   </div>
-// );
