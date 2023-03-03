@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import DropDown from "./components/DropDown";
 import SearchBar from "./components/SearchBar";
+
 class App extends React.Component {
   // Constructor
   constructor(props) {
