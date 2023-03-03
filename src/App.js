@@ -1,17 +1,17 @@
 import React from "react";
 import "./App.css";
 import DropDown from "./components/DropDown";
+import SearchBar from "./components/SearchBar";
 class App extends React.Component {
   // Constructor
   constructor(props) {
     super(props);
 
     this.state = {
-      items: [],
+      countries: [],
       DataisLoaded: false,
     };
   }
-
   // ComponentDidMount is used to
   // execute the code
   componentDidMount() {
@@ -19,13 +19,13 @@ class App extends React.Component {
       .then((res) => res.json())
       .then((json) => {
         this.setState({
-          items: json,
+          countries: json,
           DataisLoaded: true,
         });
       });
   }
   render() {
-    const { DataisLoaded, items } = this.state;
+    const { DataisLoaded, countries } = this.state;
     if (!DataisLoaded)
       return (
         <div>
@@ -33,14 +33,16 @@ class App extends React.Component {
         </div>
       );
     return (
+      <React.Fragment key={countries}>
       <div className="App">
         <h1>List of Countries</h1>
         <DropDown />
+        <SearchBar />
         <table
-          class="table table-striped table-bordered table-hover"
-          striped
-          bordered
-          hover
+          className="table table-striped table-bordered table-hover"
+          striped="true"
+          bordered="true"
+          hover="true"
           style={{
             justifyContent: "center",
             width: "80%",
@@ -49,19 +51,19 @@ class App extends React.Component {
             marginBottom: "60px",
           }}
         >
-                <thead className="table-dark">
-        <tr>
-          <th>Code</th>
-          <th>Name</th>
-          <th>Capital</th>
-          <th>Flag</th>
-          <th>subregion</th>
-        </tr>
-      </thead>
-          <tbody class="thead-dark">
-            {items.map((item) => (
+          <thead className="table-dark">
+            <tr>
+              <th>Code</th>
+              <th>Name</th>
+              <th>Capital</th>
+              <th>Flag</th>
+              <th>subregion</th>
+            </tr>
+          </thead>
+          <tbody className="thead-dark">
+            {countries.map((item) => (
               <tr item={item}>
-                <td>{item.numericCode}</td>
+                <td >{item.numericCode}</td>
                 <td>{item.name}</td>
                 <td>{item.capital}</td>
                 <td>
@@ -78,9 +80,9 @@ class App extends React.Component {
           </tbody>
         </table>
       </div>
+      </React.Fragment>
     );
   }
 }
 
 export default App;
-

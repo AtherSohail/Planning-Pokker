@@ -8,7 +8,7 @@ function DropDown() {
         justifyContent: "center",
         width: "80%",
         margin: "auto",
-
+        marginBottom: "20px",
         marginTop: "20px",
 
       }}>
