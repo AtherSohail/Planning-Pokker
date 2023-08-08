@@ -16,6 +16,7 @@ class App extends React.Component {
   // ComponentDidMount is used to
   // execute the code
   // execute the code
+  // execute the code
   componentDidMount() {
     fetch("https://restcountries.com/v2/region/europe")
       .then((res) => res.json())
